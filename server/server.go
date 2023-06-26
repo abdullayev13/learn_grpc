@@ -22,7 +22,7 @@ func main() {
 
 	chat.RegisterChatServiceServer(grpcServer, &s)
 
-	if grpcServer.Serve(lis); err != nil {
+	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve grpc over port [%s] : %v", port, err)
 	}
 
