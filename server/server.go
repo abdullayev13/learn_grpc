@@ -12,7 +12,7 @@ import (
 func main() {
 	lis, err := net.Listen("tcp", config.ServerPort)
 	if err != nil {
-		log.Fatalf("failed to liten port [%s] : %v", port, err)
+		log.Fatalf("failed to liten port [%s] : %v", config.ServerPort, err)
 	}
 
 	s := chat.Server{}
