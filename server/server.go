@@ -2,16 +2,15 @@ package main
 
 import (
 	"github.com/abdullayev13/learn_grpc/chat"
+	"github.com/abdullayev13/learn_grpc/config"
 	"log"
 	"net"
 
 	"google.golang.org/grpc"
 )
 
-var port = ":9000"
-
 func main() {
-	lis, err := net.Listen("tcp", port)
+	lis, err := net.Listen("tcp", config.ServerPort)
 	if err != nil {
 		log.Fatalf("failed to liten port [%s] : %v", port, err)
 	}
@@ -23,7 +22,7 @@ func main() {
 	chat.RegisterChatServiceServer(grpcServer, &s)
 
 	if err := grpcServer.Serve(lis); err != nil {
-		log.Fatalf("failed to serve grpc over port [%s] : %v", port, err)
+		log.Fatalf("failed to serve grpc over port [%s] : %v", config.ServerPort, err)
 	}
 
 }
